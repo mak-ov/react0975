@@ -1,10 +1,9 @@
 
 import { NavLink, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Profile from './components/Profile';
 
-const Profile = ()=>{
-  return <h2>Страница профиля</h2>;
-};
+
 
 const Messages = () => {
   return <h2>Страница с сообщениями</h2>;
@@ -20,7 +19,7 @@ const Friends = () => {
 
 function App() {
   return (
-   <div className="container-fluid mt-5">
+    <div className="container-fluid mt-5">
     <div className="row">
       <div className="col-sm-3">
         <div className="nav flex-column nav-pills" aria-orientation="vertical">
@@ -38,7 +37,7 @@ function App() {
         </Routes>
       </div>
     </div>
-   </div>
+    </div>
   );
 }
 
