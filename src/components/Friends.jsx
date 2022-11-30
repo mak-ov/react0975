@@ -1,4 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
+
 
 const TableRow = (props) => {
   return (
@@ -12,16 +14,33 @@ const TableRow = (props) => {
 };
 
 
+class Friends extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {userRow: [] };
+    }
 
-const Friends = (props) => {
-  let users = props.function();
-  let usersCount = (Object.keys(users).length);
-  let userRow = [];
+    componentDidMount() {
+      this.props.function().then((users)=>{
+      let usersCount = users.length;
+      let userRow = [];
+    
+      for(let i = 0; i < usersCount; i++) {
+        userRow.push(<TableRow id={users[i].id}
+          key={i}
+          index={i}
+          name={users[i].name}
+          lastname={users[i].lastname}
+          />
+          );
+        }
+        this.setState({userRow: userRow});
+      });
+    }
+ 
 
-  for(let i=0; i < usersCount; i++) {
-    userRow.push(<TableRow id={users[i].id} key={i} index={i} name={users[i].name} lastname={users[i].lastname}/>)
-  }
-  return (
+render() {
+    return (
     <table className="table table-bordered">
       <thead>
         <tr>
@@ -29,9 +48,10 @@ const Friends = (props) => {
           <th scope="col">Имя Фамилия</th>
         </tr>
       </thead>
-        <tbody>{userRow}</tbody>
+        <tbody>{this.state.userRow}</tbody>
     </table>
   );
-};
+}
+}
 
 export default Friends;
