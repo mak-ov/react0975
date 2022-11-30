@@ -18,9 +18,9 @@ const users = {
 };
 
 export function getUser(userId) {
-  for (let i = 0; i < Object.keys(users).length; i++) {
-    if (users[i].id == userId) return users[i];
-  }
+  // for (let i = 0; i < Object.keys(users).length; i++) {
+  //   if (users[i].id == userId) return users[i];
+  // }
   return user;
 }
 
